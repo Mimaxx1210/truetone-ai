@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>True Tone AI — Beauté pensée pour votre carnation</title>
+<meta name="description" content="L'assistant beauté intelligent conçu pour les peaux noires et métissées. Recommandations personnalisées, sans flashback, sans compromis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cocoa:    #1C0E08;
+    --espresso: #2E1A0E;
+    --terra:    #A04828;
+    --honey:    #C87C3A;
+    --gold:     #D4A056;
+    --cream:    #F5EAD8;
+    --warm-off: #FBF6EE;
+    --muted:    #7A5C46;
+    --border:   rgba(160,72,40,0.18);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-off);
+    color: var(--cocoa);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5vw;
+    background: rgba(251,246,238,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--espresso); text-decoration: none;
+  }
+  .logo span { color: var(--terra); font-style: italic; }
+  nav ul { list-style: none; display: flex; gap: 2.5rem; align-items: center; }
+  nav a { text-decoration: none; font-size: 0.82rem; letter-spacing: 0.06em; color: var(--muted); text-transform: uppercase; transition: color 0.2s; }
+  nav a:hover { color: var(--terra); }
+  .nav-cta {
+    background: var(--terra); color: var(--cream) !important;
+    padding: 0.55rem 1.4rem; border-radius: 2px;
+    letter-spacing: 0.08em; transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--espresso) !important; color: var(--cream) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8vw 5vw 8vw 8vw;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--terra); margin-bottom: 1.8rem;
+    border-bottom: 1px solid var(--honey); padding-bottom: 0.4rem;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 300; line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--espresso); margin-bottom: 1.8rem;
+  }
+  h1 em { font-style: italic; color: var(--terra); }
+  .hero-sub {
+    font-size: 1rem; color: var(--muted); max-width: 440px;
+    margin-bottom: 2.8rem; line-height: 1.8;
+  }
+  .hero-form {
+    display: flex; gap: 0; max-width: 420px;
+    border: 1px solid var(--honey); border-radius: 2px; overflow: hidden;
+  }
+  .hero-form input {
+    flex: 1; padding: 1rem 1.2rem;
+    background: transparent; border: none; outline: none;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    color: var(--espresso);
+  }
+  .hero-form input::placeholder { color: var(--muted); }
+  .hero-form button {
+    background: var(--terra); color: var(--cream);
+    border: none; cursor: pointer; padding: 1rem 1.6rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    transition: background 0.2s; white-space: nowrap;
+  }
+  .hero-form button:hover { background: var(--espresso); }
+  .hero-note { font-size: 0.75rem; color: var(--muted); margin-top: 0.9rem; }
+
+  .hero-right {
+    background: var(--espresso);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-visual {
+    width: 85%; max-width: 380px;
+    background: rgba(255,255,255,0.04);
+    border: 0.5px solid rgba(212,160,86,0.3);
+    border-radius: 4px; padding: 2rem;
+  }
+  .chat-bubble {
+    border-radius: 18px 18px 18px 4px;
+    padding: 1rem 1.2rem; margin-bottom: 1rem;
+    font-size: 0.88rem; line-height: 1.6;
+  }
+  .bubble-lea {
+    background: rgba(212,160,86,0.15);
+    color: var(--cream);
+    border: 0.5px solid rgba(212,160,86,0.25);
+  }
+  .bubble-user {
+    background: rgba(255,255,255,0.07); color: rgba(245,234,216,0.75);
+    border-radius: 18px 18px 4px 18px; margin-left: auto; width: fit-content; max-width: 80%;
+  }
+  .lea-tag {
+    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem; display: block;
+  }
+  .product-card {
+    background: rgba(255,255,255,0.06); border: 0.5px solid rgba(212,160,86,0.2);
+    border-radius: 4px; padding: 0.9rem 1rem; margin-top: 0.8rem;
+  }
+  .product-card .pname { color: var(--cream); font-size: 0.85rem; font-weight: 400; }
+  .product-card .pbrand { color: var(--gold); font-size: 0.72rem; letter-spacing: 0.06em; }
+  .product-card .ptag {
+    display: inline-block; margin-top: 0.4rem;
+    background: rgba(160,72,40,0.35); color: var(--cream);
+    font-size: 0.68rem; padding: 0.2rem 0.6rem; border-radius: 2px;
+    letter-spacing: 0.05em;
+  }
+  .hero-deco {
+    position: absolute; width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,124,58,0.12) 0%, transparent 70%);
+    top: -80px; right: -80px;
+  }
+  .hero-deco2 {
+    position: absolute; width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,160,86,0.08) 0%, transparent 70%);
+    bottom: -40px; left: -40px;
+  }
+
+  /* SECTION GÉNÉRIQUE */
+  section { padding: 7rem 8vw; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--terra); margin-bottom: 1rem; display: block;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300; line-height: 1.2; color: var(--espresso);
+    margin-bottom: 1.5rem;
+  }
+  h2 em { font-style: italic; color: var(--terra); }
+
+  /* PROBLEM */
+  .problem { background: var(--cream); }
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+  .problem-text p { color: var(--muted); margin-bottom: 1.2rem; font-size: 0.97rem; }
+  .pain-list { list-style: none; margin-top: 2rem; }
+  .pain-list li {
+    padding: 1rem 0; border-bottom: 0.5px solid var(--border);
+    display: flex; align-items: flex-start; gap: 1rem;
+    font-size: 0.92rem; color: var(--espresso);
+  }
+  .pain-list li:last-child { border-bottom: none; }
+  .pain-icon {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--terra); color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; flex-shrink: 0; margin-top: 0.1rem;
+  }
+  .stat-block {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  }
+  .stat-card {
+    background: var(--warm-off); border: 0.5px solid var(--border);
+    padding: 1.8rem 1.5rem; border-radius: 2px;
+  }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem; font-weight: 300; color: var(--terra);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.5; }
+
+  /* HOW IT WORKS */
+  .how { background: var(--warm-off); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 4rem; }
+  .step { position: relative; }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; font-weight: 300; color: var(--border);
+    line-height: 1; margin-bottom: 1rem;
+  }
+  .step h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400; color: var(--espresso);
+    margin-bottom: 0.7rem;
+  }
+  .step p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; }
+  .step-connector {
+    position: absolute; top: 2rem; right: -1.25rem;
+    width: 2.5rem; height: 1px; background: var(--border);
+  }
+  .steps .step:last-child .step-connector { display: none; }
+
+  /* PRODUCTS */
+  .products { background: var(--espresso); color: var(--cream); }
+  .products h2 { color: var(--cream); }
+  .products h2 em { color: var(--gold); }
+  .products .section-label { color: var(--gold); }
+  .products-intro { color: rgba(245,234,216,0.65); max-width: 560px; font-size: 0.97rem; margin-bottom: 3.5rem; }
+  .brands-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .brand-card {
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(212,160,86,0.2);
+    padding: 1.5rem; border-radius: 2px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .brand-card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(212,160,86,0.5);
+  }
+  .brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--cream); margin-bottom: 0.3rem; }
+  .brand-type { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--gold); text-transform: uppercase; }
+  .brand-tags { margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .brand-tag {
+    font-size: 0.68rem; background: rgba(160,72,40,0.3);
+    color: rgba(245,234,216,0.7); padding: 0.2rem 0.5rem;
+    border-radius: 2px; letter-spacing: 0.04em;
+  }
+
+  /* WHY */
+  .why { background: var(--cream); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3.5rem; }
+  .why-card {
+    border-top: 1.5px solid var(--terra);
+    padding-top: 1.5rem;
+  }
+  .why-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 400; color: var(--espresso);
+    margin-bottom: 0.7rem;
+  }
+  .why-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.75; }
+
+  /* BETA */
+  .beta {
+    background: var(--terra); color: var(--cream);
+    text-align: center; padding: 6rem 8vw;
+  }
+  .beta h2 { color: var(--cream); }
+  .beta h2 em { color: var(--cream); font-style: italic; opacity: 0.75; }
+  .beta p { color: rgba(245,234,216,0.75); max-width: 520px; margin: 1.2rem auto 2.5rem; }
+  .beta-form { display: flex; gap: 0; max-width: 460px; margin: 0 auto; border-radius: 2px; overflow: hidden; }
+  .beta-form input {
+    flex: 1; padding: 1.1rem 1.4rem;
+    background: rgba(255,255,255,0.12); border: none; outline: none;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    color: var(--cream); border-right: 1px solid rgba(255,255,255,0.15);
+  }
+  .beta-form input::placeholder { color: rgba(245,234,216,0.5); }
+  .beta-form button {
+    background: var(--espresso); color: var(--cream); border: none;
+    padding: 1.1rem 1.8rem; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
+    letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .beta-form button:hover { opacity: 0.85; }
+  .beta-note { font-size: 0.75rem; color: rgba(245,234,216,0.5); margin-top: 1rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--cocoa); color: rgba(245,234,216,0.5);
+    padding: 2.5rem 8vw;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem;
+  }
+  footer .logo { color: var(--cream); font-size: 1.1rem; }
+  footer p { margin-top: 0.3rem; }
+
+  /* SUCCESS MSG */
+  .success-msg {
+    display: none; color: var(--espresso); font-size: 0.9rem;
+    background: rgba(212,160,86,0.15); border: 1px solid var(--honey);
+    padding: 0.9rem 1.4rem; border-radius: 2px; margin-top: 1rem; max-width: 420px;
+  }
+  .success-msg.show { display: block; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 420px; order: -1; }
+    .hero-left { padding: 6rem 6vw 4rem; }
+    .problem-grid, .brands-grid, .why-grid { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .step-connector { display: none; }
+    .stat-block { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav ul { display: none; }
+    .problem-grid, .brands-grid, .why-grid, .stat-block { grid-template-columns: 1fr; }
+    .hero-form, .beta-form { flex-direction: column; }
+    .hero-form button, .beta-form button { width: 100%; }
+    section { padding: 4rem 6vw; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">True Tone <span>AI</span></a>
+  <ul>
+    <li><a href="#how">Comment ça marche</a></li>
+    <li><a href="#produits">Produits</a></li>
+    <li><a href="#beta" class="nav-cta">Rejoindre la bêta</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-eyebrow">Assistant beauté intelligent</span>
+    <h1>La beauté pensée<br>pour <em>votre</em> carnation</h1>
+    <p class="hero-sub">
+      Léa est votre experte beauté personnelle — spécialiste des peaux noires et métissées.
+      Recommandations sur-mesure, zéro flashback, zéro compromis.
+    </p>
+    <form class="hero-form" onsubmit="handleSignup(event,'hero')">
+      <input type="email" id="hero-email" placeholder="votre@email.com" required>
+      <button type="submit">Rejoindre</button>
+    </form>
+    <div class="success-msg" id="hero-success">
+      ✓ Parfait ! Vous serez parmi les premières à essayer True Tone AI.
+    </div>
+    <p class="hero-note">Bêta gratuite · Aucune carte bancaire · Accès anticipé</p>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-deco"></div>
+    <div class="hero-deco2"></div>
+    <div class="hero-visual">
+      <div class="chat-bubble bubble-user">
+        J'ai une peau ébène grasse et je cherche une poudre pour un mariage 🙏
+      </div>
+      <div style="margin-top: 1rem;">
+        <span class="lea-tag">Léa</span>
+        <div class="chat-bubble bubble-lea">
+          Pour votre mariage avec flash photo, l'essentiel c'est d'éviter tout risque de flashback. Je vous recommande :
+          <div class="product-card">
+            <div class="pbrand">Ben Nye</div>
+            <div class="pname">Luxury Powder — Ebony</div>
+            <span class="ptag">Zéro flashback</span>
+            <span class="ptag" style="margin-left:0.3rem">Peau ébène</span>
+          </div>
+          <div class="product-card">
+            <div class="pbrand">Laura Mercier</div>
+            <div class="pname">Translucent Powder — Deep</div>
+            <span class="ptag">Longue tenue</span>
+            <span class="ptag" style="margin-left:0.3rem">Matifiante</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problème">
+  <div class="problem-grid">
+    <div class="problem-text">
+      <span class="section-label">Le constat</span>
+      <h2>La beauté mainstream<br><em>n'a pas été pensée</em><br>pour vous</h2>
+      <p>
+        Les recommandations beauté génériques ignorent les spécificités des peaux foncées.
+        Résultat : mauvaises teintes, effet cendré, photos gâchées par le flashback.
+      </p>
+      <ul class="pain-list">
+        <li>
+          <div class="pain-icon">✗</div>
+          <span>Poudres "universelles" qui donnent un teint grisâtre ou fantomatique en photo</span>
+        </li>
+        <li>
+          <div class="pain-icon">✗</div>
+          <span>Sous-tons mal identifiés — warm, cool, neutre — que les vendeurs en magasin ignorent</span>
+        </li>
+        <li>
+          <div class="pain-icon">✗</div>
+          <span>Gammes de teintes trop limitées chez la plupart des marques grand public</span>
+        </li>
+        <li>
+          <div class="pain-icon">✗</div>
+          <span>Conseils beauté qui ne tiennent pas compte de la diversité des carnations</span>
+        </li>
+      </ul>
+    </div>
+    <div class="stat-block">
+      <div class="stat-card">
+        <div class="stat-number">67%</div>
+        <div class="stat-label">des femmes à peau foncée disent ne pas trouver leur teinte en magasin</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">1 sur 3</div>
+        <div class="stat-label">a déjà raté des photos d'événements à cause du flashback</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">+40%</div>
+        <div class="stat-label">de croissance du marché beauté pour les peaux foncées en Europe</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">Léa</div>
+        <div class="stat-label">est là pour changer ça — une experte pour vous, pas pour toutes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <span class="section-label">Comment ça marche</span>
+  <h2>Simple comme une conversation<br>avec <em>une vraie experte</em></h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-connector"></div>
+      <div class="step-num">01</div>
+      <h3>Décrivez votre carnation</h3>
+      <p>Dites à Léa votre carnation, sous-ton, type de peau et l'occasion. Elle s'adapte à vous, pas l'inverse.</p>
+    </div>
+    <div class="step">
+      <div class="step-connector"></div>
+      <div class="step-num">02</div>
+      <h3>Obtenez des recommandations</h3>
+      <p>Léa sélectionne les produits adaptés à votre profil — fond de teint, poudres, soins — avec les bonnes teintes.</p>
+    </div>
+    <div class="step">
+      <div class="step-connector"></div>
+      <div class="step-num">03</div>
+      <h3>Achetez en confiance</h3>
+      <p>Accédez directement aux produits chez Sephora, Nocibé ou Douglas. Plus de mauvaises surprises à l'ouverture du colis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUITS -->
+<section class="products" id="produits">
+  <span class="section-label">Catalogue</span>
+  <h2>Les meilleures marques,<br><em>triées pour vous</em></h2>
+  <p class="products-intro">
+    True Tone AI référence des centaines de produits, sélectionnés et annotés pour les peaux noires et métissées. Disponibles chez vos enseignes préférées.
+  </p>
+  <div class="brands-grid">
+    <div class="brand-card">
+      <div class="brand-name">Fenty Beauty</div>
+      <div class="brand-type">Inclusivité · 40 teintes</div>
+      <div class="brand-tags">
+        <span class="brand-tag">Fonds de teint</span>
+        <span class="brand-tag">Poudres</span>
+        <span class="brand-tag">Contour</span>
+      </div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-name">Ben Nye</div>
+      <div class="brand-type">Pro · Zéro flashback</div>
+      <div class="brand-tags">
+        <span class="brand-tag">Poudres libres</span>
+        <span class="brand-tag">Baking</span>
+        <span class="brand-tag">Événements</span>
+      </div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-name">Laura Mercier</div>
+      <div class="brand-type">Luxe · Gamme étendue</div>
+      <div class="brand-tags">
+        <span class="brand-tag">Poudres</span>
+        <span class="brand-tag">Fixation</span>
+        <span class="brand-tag">Brightening</span>
+      </div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-name">Black Opal</div>
+      <div class="brand-type">Spécialiste peaux foncées</div>
+      <div class="brand-tags">
+        <span class="brand-tag">Fond de teint</span>
+        <span class="brand-tag">Soin</span>
+        <span class="brand-tag">Poudres</span>
+      </div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-name">MAC</div>
+      <div class="brand-type">Pro · Référence teintes foncées</div>
+      <div class="brand-tags">
+        <span class="brand-tag">Mineralize</span>
+        <span class="brand-tag">Skinfinish</span>
+        <span class="brand-tag">Pro palette</span>
+      </div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-name">Charlotte Tilbury</div>
+      <div class="brand-type">Luxe · Finish lumineux</div>
+      <div class="brand-tags">
+        <span class="brand-tag">Airbrush</span>
+        <span class="brand-tag">Flawless filter</span>
+      </div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-name">Hourglass</div>
+      <div class="brand-type">Prestige · Ambient light</div>
+      <div class="brand-tags">
+        <span class="brand-tag">Lumineux</span>
+        <span class="brand-tag">Satiné</span>
+        <span class="brand-tag">Mature</span>
+      </div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-name">RCMA</div>
+      <div class="brand-type">Cinéma/TV · Anti-flashback</div>
+      <div class="brand-tags">
+        <span class="brand-tag">No Color Powder</span>
+        <span class="brand-tag">Photos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <span class="section-label">Pourquoi True Tone AI</span>
+  <h2>Une expertise construite<br>pour <em>votre réalité</em></h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <h3>Zéro flashback</h3>
+      <p>Chaque recommandation intègre le risque de flashback. Pour vos événements, photos, soirées — plus jamais d'effet fantôme.</p>
+    </div>
+    <div class="why-card">
+      <h3>Sous-tons identifiés</h3>
+      <p>Warm, cool, neutre — Léa comprend les nuances de votre carnation pour recommander les teintes qui vous subliment vraiment.</p>
+    </div>
+    <div class="why-card">
+      <h3>Disponible partout</h3>
+      <p>Sephora, Nocibé, Douglas — les produits recommandés sont disponibles dans vos enseignes habituelles, en ligne ou en boutique.</p>
+    </div>
+    <div class="why-card">
+      <h3>Conçu pour vous</h3>
+      <p>Pas un outil générique adapté après coup. True Tone AI a été pensé dès le départ pour les peaux noires et métissées.</p>
+    </div>
+    <div class="why-card">
+      <h3>Peau grasse, sèche, mixte</h3>
+      <p>Les recommandations s'adaptent à votre type de peau, vos problématiques et la saison — pas une formule unique pour toutes.</p>
+    </div>
+    <div class="why-card">
+      <h3>En conversation naturelle</h3>
+      <p>Parlez à Léa comme à une amie experte. Pas de formulaires complexes, pas de quiz interminables — juste un échange fluide.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BETA CTA -->
+<section class="beta" id="beta">
+  <h2>Rejoignez la bêta<br><em>en avant-première</em></h2>
+  <p>Les premières inscrites bénéficient d'un accès prioritaire et d'un accompagnement personnalisé pour tester True Tone AI.</p>
+  <form class="beta-form" onsubmit="handleSignup(event,'beta')">
+    <input type="email" id="beta-email" placeholder="votre@email.com" required>
+    <button type="submit">Accès bêta</button>
+  </form>
+  <div class="success-msg" id="beta-success" style="background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.3);color:var(--cream);max-width:460px;">
+    ✓ Inscription confirmée ! Nous vous contacterons très prochainement.
+  </div>
+  <p class="beta-note">Accès gratuit · Données confidentielles · Désabonnement en 1 clic</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <a class="logo" href="#">True Tone <span style="color:var(--terra);font-style:italic;">AI</span></a>
+    <p>L'assistant beauté pour les peaux noires et métissées.</p>
+  </div>
+  <p>© 2026 True Tone AI · Fait avec soin en France</p>
+</footer>
+
+<script>
+function handleSignup(e, source) {
+  e.preventDefault();
+  const email = document.getElementById(source + '-email').value;
+  const successEl = document.getElementById(source + '-success');
+  successEl.classList.add('show');
+  document.getElementById(source + '-email').value = '';
+  setTimeout(() => successEl.classList.remove('show'), 6000);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+
+</body>
+</html>
