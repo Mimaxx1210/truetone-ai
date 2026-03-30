@@ -112,42 +112,6 @@
     display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden;
   }
-  .hero-visual {
-    width: 85%; max-width: 380px;
-    background: rgba(255,255,255,0.04);
-    border: 0.5px solid rgba(212,160,86,0.3);
-    border-radius: 4px; padding: 2rem;
-  }
-  .chat-bubble {
-    border-radius: 18px 18px 18px 4px;
-    padding: 1rem 1.2rem; margin-bottom: 1rem;
-    font-size: 0.88rem; line-height: 1.6;
-  }
-  .bubble-lea {
-    background: rgba(212,160,86,0.15);
-    color: var(--cream);
-    border: 0.5px solid rgba(212,160,86,0.25);
-  }
-  .bubble-user {
-    background: rgba(255,255,255,0.07); color: rgba(245,234,216,0.75);
-    border-radius: 18px 18px 4px 18px; margin-left: auto; width: fit-content; max-width: 80%;
-  }
-  .lea-tag {
-    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.5rem; display: block;
-  }
-  .product-card {
-    background: rgba(255,255,255,0.06); border: 0.5px solid rgba(212,160,86,0.2);
-    border-radius: 4px; padding: 0.9rem 1rem; margin-top: 0.8rem;
-  }
-  .product-card .pname { color: var(--cream); font-size: 0.85rem; font-weight: 400; }
-  .product-card .pbrand { color: var(--gold); font-size: 0.72rem; letter-spacing: 0.06em; }
-  .product-card .ptag {
-    display: inline-block; margin-top: 0.4rem;
-    background: rgba(160,72,40,0.35); color: var(--cream);
-    font-size: 0.68rem; padding: 0.2rem 0.6rem; border-radius: 2px;
-    letter-spacing: 0.05em;
-  }
   .hero-deco {
     position: absolute; width: 300px; height: 300px; border-radius: 50%;
     background: radial-gradient(circle, rgba(200,124,58,0.12) 0%, transparent 70%);
@@ -268,6 +232,80 @@
   }
   .why-card p { font-size: 0.87rem; color: var(--muted); line-height: 1.75; }
 
+  /* PASSPORT FEATURE BANNER */
+  .passport-banner {
+    background: var(--espresso);
+    padding: 5rem 8vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .passport-banner h2 { color: var(--cream); }
+  .passport-banner h2 em { color: var(--gold); }
+  .passport-banner .section-label { color: var(--gold); }
+  .passport-banner p { color: rgba(245,234,216,0.65); font-size: 0.97rem; line-height: 1.8; margin-bottom: 1.5rem; }
+  .passport-features { list-style: none; }
+  .passport-features li {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 0.85rem 0; border-bottom: 0.5px solid rgba(212,160,86,0.15);
+    color: rgba(245,234,216,0.8); font-size: 0.9rem;
+  }
+  .passport-features li:last-child { border-bottom: none; }
+  .pf-icon {
+    color: var(--gold); font-size: 1rem; flex-shrink: 0; margin-top: 0.15rem;
+  }
+  .passport-visual {
+    background: rgba(255,255,255,0.04);
+    border: 0.5px solid rgba(212,160,86,0.25);
+    border-radius: 4px; padding: 2rem;
+  }
+  .pv-header {
+    display: flex; align-items: center; gap: 0.8rem;
+    margin-bottom: 1.5rem; padding-bottom: 1rem;
+    border-bottom: 0.5px solid rgba(212,160,86,0.2);
+  }
+  .pv-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold);
+  }
+  .pv-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; color: var(--gold); letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .pv-routine {
+    margin-bottom: 1.2rem;
+  }
+  .pv-routine-name {
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(212,160,86,0.6); margin-bottom: 0.6rem;
+  }
+  .pv-product {
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(212,160,86,0.15);
+    border-radius: 3px; padding: 0.7rem 0.9rem;
+    margin-bottom: 0.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .pv-product-name { color: var(--cream); font-size: 0.83rem; }
+  .pv-product-cat {
+    font-size: 0.68rem; color: var(--gold);
+    background: rgba(160,72,40,0.3); padding: 0.15rem 0.5rem;
+    border-radius: 2px; letter-spacing: 0.04em;
+  }
+  .pv-chat {
+    margin-top: 1.2rem; padding-top: 1rem;
+    border-top: 0.5px solid rgba(212,160,86,0.15);
+  }
+  .pv-bubble {
+    background: rgba(212,160,86,0.1);
+    border: 0.5px solid rgba(212,160,86,0.2);
+    border-radius: 12px 12px 12px 3px;
+    padding: 0.7rem 1rem; font-size: 0.82rem;
+    color: rgba(245,234,216,0.8); line-height: 1.5;
+  }
+
   /* BETA */
   .beta {
     background: var(--terra); color: var(--cream);
@@ -317,17 +355,18 @@
     .hero { grid-template-columns: 1fr; }
     .hero-right { min-height: 420px; order: -1; }
     .hero-left { padding: 6rem 6vw 4rem; }
-    .problem-grid, .brands-grid, .why-grid { grid-template-columns: 1fr 1fr; }
+    .problem-grid, .brands-grid, .why-grid, .passport-banner { grid-template-columns: 1fr 1fr; }
     .steps { grid-template-columns: 1fr; }
     .step-connector { display: none; }
     .stat-block { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 600px) {
     nav ul { display: none; }
-    .problem-grid, .brands-grid, .why-grid, .stat-block { grid-template-columns: 1fr; }
+    .problem-grid, .brands-grid, .why-grid, .stat-block, .passport-banner { grid-template-columns: 1fr; }
     .hero-form, .beta-form { flex-direction: column; }
     .hero-form button, .beta-form button { width: 100%; }
     section { padding: 4rem 6vw; }
+    .passport-banner { padding: 4rem 6vw; }
   }
 </style>
 </head>
@@ -350,7 +389,7 @@
     <h1>La beauté pensée<br>pour <em>votre</em> carnation</h1>
     <p class="hero-sub">
       Rosy est votre experte beauté personnelle, spécialiste des peaux noires et métissées.
-      Recommandations sur-mesure, zéro flashback, zéro compromis.
+      Recommandations sur-mesure, routines sauvegardées, panier intégré - zéro compromis.
     </p>
     <form class="hero-form" onsubmit="handleSignup(event,'hero')">
       <input type="email" id="hero-email" placeholder="votre@email.com" required>
@@ -362,7 +401,9 @@
     <p class="hero-note">Bêta gratuite · Aucune carte bancaire · Accès anticipé</p>
   </div>
 
-    <div class="hero-right" style="padding:0;overflow:hidden;">
+  <div class="hero-right" style="padding:0;overflow:hidden;">
+    <div class="hero-deco"></div>
+    <div class="hero-deco2"></div>
     <img src="hero-face.png"
          alt="True Tone AI - analyse de carnation"
          style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"/>
@@ -383,7 +424,7 @@
         </li>
         <li>
           <div class="pain-icon">✗</div>
-          <span>Sous-tons mal identifiés : chaud, froid, neutre - que les vendeurs en magasin ignorent</span>
+          <span>Sous-tons mal identifiés : chaud, froid, neutre - pas toujours maîtrisés en conseil en magasin</span>
         </li>
         <li>
           <div class="pain-icon">✗</div>
@@ -391,7 +432,7 @@
         </li>
         <li>
           <div class="pain-icon">✗</div>
-          <span>Conseils beauté qui ne tiennent pas compte de la diversité des carnations</span>
+          <span>Conseils beauté qui ne tiennent pas toujours compte de la diversité des carnations</span>
         </li>
       </ul>
     </div>
@@ -431,16 +472,81 @@
       <div class="step-connector"></div>
       <div class="step-num">02</div>
       <h3>Obtenez des recommandations</h3>
-      <p>Rosy sélectionne les produits adaptés à votre profil - fond de teint, poudres, soins - avec les bonnes teintes.</p>
+      <p>Rosy sélectionne les produits adaptés à votre profil - fond de teint, poudres, soins - avec les bonnes teintes et zéro risque de flashback.</p>
     </div>
     <div class="step">
       <div class="step-connector"></div>
       <div class="step-num">03</div>
-      <h3>Achetez en confiance</h3>
-      <p>Accédez directement aux produits chez Sephora, Nocibé ou Douglas. Plus de mauvaises surprises à l'ouverture du colis.</p>
+      <h3>Achetez en un mot</h3>
+      <p>Rosy ajoute vos produits au panier directement depuis la conversation. Sephora, Nocibé, Lookfantastic - sans quitter le chat.</p>
     </div>
   </div>
 </section>
+
+<!-- BEAUTY PASSPORT BANNER -->
+<div class="passport-banner">
+  <div>
+    <span class="section-label">Beauty Passport</span>
+    <h2>Votre carnet beauté<br><em>personnel et intelligent</em></h2>
+    <p>
+      Rosy se souvient de vous. Votre carnation, vos routines validées, vos produits préférés - tout est conservé dans votre Beauty Passport, accessible à chaque conversation.
+    </p>
+    <p>
+      Comme un dossier médical qui vous suit toute la vie, votre Beauty Passport grandit avec vous. Il évolue avec votre peau, vos saisons, vos occasions.
+    </p>
+    <ul class="passport-features">
+      <li>
+        <span class="pf-icon">✦</span>
+        <span>Vos routines sauvegardées - quotidienne, soirée, événement</span>
+      </li>
+      <li>
+        <span class="pf-icon">✦</span>
+        <span>Rosy vous reconnaît à chaque nouvelle conversation</span>
+      </li>
+      <li>
+        <span class="pf-icon">✦</span>
+        <span>Re-commandez vos produits favoris en une phrase</span>
+      </li>
+      <li>
+        <span class="pf-icon">✦</span>
+        <span>Votre profil peau évolue avec vous - saisons, grossesse, âge</span>
+      </li>
+    </ul>
+  </div>
+  <div class="passport-visual">
+    <div class="pv-header">
+      <div class="pv-dot"></div>
+      <div class="pv-title">Beauty Passport - Marie</div>
+    </div>
+    <div class="pv-routine">
+      <div class="pv-routine-name">Routine quotidienne</div>
+      <div class="pv-product">
+        <span class="pv-product-name">Fenty Pro Filt'r Deep 420</span>
+        <span class="pv-product-cat">fond de teint</span>
+      </div>
+      <div class="pv-product">
+        <span class="pv-product-name">Ben Nye Cocoa</span>
+        <span class="pv-product-cat">poudre</span>
+      </div>
+    </div>
+    <div class="pv-routine">
+      <div class="pv-routine-name">Routine événement</div>
+      <div class="pv-product">
+        <span class="pv-product-name">NARS Natural Radiant</span>
+        <span class="pv-product-cat">fond de teint</span>
+      </div>
+      <div class="pv-product">
+        <span class="pv-product-name">Laura Mercier Deep</span>
+        <span class="pv-product-cat">poudre</span>
+      </div>
+    </div>
+    <div class="pv-chat">
+      <div class="pv-bubble">
+        "Mon Fenty est presque fini - remets-le dans mon panier ✨"
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- PRODUITS -->
 <section class="products" id="produits">
@@ -534,11 +640,11 @@
     </div>
     <div class="why-card">
       <h3>Sous-tons identifiés</h3>
-      <p>Warm, cool, neutre - Rosy comprend les nuances de votre carnation pour recommander les teintes qui vous subliment vraiment.</p>
+      <p>Chaud, froid, neutre - Rosy comprend les nuances de votre carnation pour recommander les teintes qui vous subliment vraiment.</p>
     </div>
     <div class="why-card">
-      <h3>Disponible partout</h3>
-      <p>Sephora, Nocibé, Douglas - les produits recommandés sont disponibles dans vos enseignes habituelles, en ligne ou en boutique.</p>
+      <h3>Votre Beauty Passport</h3>
+      <p>Rosy se souvient de votre profil, vos routines, vos produits validés. D'une conversation à l'autre, elle vous reconnaît - comme une vraie experte qui vous connaît.</p>
     </div>
     <div class="why-card">
       <h3>Conçu pour vous</h3>
@@ -549,8 +655,8 @@
       <p>Les recommandations s'adaptent à votre type de peau, vos problématiques et la saison - pas une formule unique pour toutes.</p>
     </div>
     <div class="why-card">
-      <h3>En conversation naturelle</h3>
-      <p>Parlez à Rosy comme à une amie experte. Pas de formulaires complexes, pas de quiz interminables - juste un échange fluide.</p>
+      <h3>Commandez sans quitter le chat</h3>
+      <p>Rosy ajoute vos produits au panier en un mot. Fenty, Ben Nye, Laura Mercier - disponibles chez Sephora, Nocibé ou Lookfantastic directement depuis la conversation.</p>
     </div>
   </div>
 </section>
@@ -579,33 +685,26 @@
 </footer>
 
 <script>
-// ⚠️ REMPLACE cette URL par ton URL Apps Script après déploiement
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyF4n0xKjjBWiy0hKH_2AoGmBaBV9sx1pPd2dPO6s8TZgvvVEL9R39OaXRWd7Ax-6tEYA/exec";
 
 async function handleSignup(e, source) {
   e.preventDefault();
-
   const emailInput = document.getElementById(source + '-email');
   const btn        = e.target.querySelector('button');
   const successEl  = document.getElementById(source + '-success');
   const email      = emailInput.value.trim();
-
   btn.textContent = "...";
   btn.disabled = true;
-
   try {
-    // text/plain est requis pour passer no-cors sans preflight bloqué
     await fetch(APPS_SCRIPT_URL, {
       method: "POST",
       mode: "no-cors",
       headers: { "Content-Type": "text/plain" },
       body: JSON.stringify({ email: email, source: source })
     });
-
     emailInput.value = "";
     successEl.classList.add('show');
     setTimeout(() => successEl.classList.remove('show'), 7000);
-
   } catch (err) {
     alert("Une erreur est survenue. Réessaie dans un instant.");
   } finally {
