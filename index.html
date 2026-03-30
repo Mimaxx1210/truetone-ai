@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>True Tone AI — Beauté pensée pour votre carnation</title>
-<meta name="description" content="L'assistant beauté intelligent conçu pour les peaux noires et métissées. Recommandations personnalisées, sans flashback, sans compromis.">
+<meta name="description" content="L'assistante beauté intelligente conçue pour les peaux noires et métissées. Recommandations personnalisées, sans flashback, sans compromis.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -349,7 +349,7 @@
     <span class="hero-eyebrow">Assistant beauté intelligent</span>
     <h1>La beauté pensée<br>pour <em>votre</em> carnation</h1>
     <p class="hero-sub">
-      Léa est votre experte beauté personnelle — spécialiste des peaux noires et métissées.
+      Laetitia est votre experte beauté personnelle — spécialiste des peaux noires et métissées.
       Recommandations sur-mesure, zéro flashback, zéro compromis.
     </p>
     <form class="hero-form" onsubmit="handleSignup(event,'hero')">
@@ -400,20 +400,20 @@
     </div>
     <div class="stat-block">
       <div class="stat-card">
-        <div class="stat-number">67%</div>
-        <div class="stat-label">des femmes à peau foncée disent ne pas trouver leur teinte en magasin</div>
+        <div class="stat-number">72%</div>
+        <div class="stat-label">des consommatrices noires estiment qu'il existe un manque dans l'offre beauté qui leur est destinée (NielsenIQ, 2022)</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">1 sur 3</div>
-        <div class="stat-label">a déjà raté des photos d'événements à cause du flashback</div>
+        <div class="stat-number">47% → 13%</div>
+        <div class="stat-label">font leurs achats en grande surface, mais seulement 13% y trouvent des produits adaptés à leurs besoins (McKinsey, 2022)</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">+40%</div>
-        <div class="stat-label">de croissance du marché beauté pour les peaux foncées en Europe</div>
+        <div class="stat-number">$9,2 Mds</div>
+        <div class="stat-label">c'est la valeur du marché mondial de la beauté noire en 2024, attendu à $31,6 Mds d'ici 2034 (InsightAce, 2024)</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">Léa</div>
-        <div class="stat-label">est là pour changer ça — une experte pour vous, pas pour toutes</div>
+        <div class="stat-number">Laetitia</div>
+        <div class="stat-label">est là pour ça — une experte qui comprend vraiment votre carnation</div>
       </div>
     </div>
   </div>
@@ -428,13 +428,13 @@
       <div class="step-connector"></div>
       <div class="step-num">01</div>
       <h3>Décrivez votre carnation</h3>
-      <p>Dites à Léa votre carnation, sous-ton, type de peau et l'occasion. Elle s'adapte à vous, pas l'inverse.</p>
+      <p>Dites à Laetitia votre carnation, sous-ton, type de peau et l'occasion. Elle s'adapte à vous, pas l'inverse.</p>
     </div>
     <div class="step">
       <div class="step-connector"></div>
       <div class="step-num">02</div>
       <h3>Obtenez des recommandations</h3>
-      <p>Léa sélectionne les produits adaptés à votre profil — fond de teint, poudres, soins — avec les bonnes teintes.</p>
+      <p>Laetitia sélectionne les produits adaptés à votre profil — fond de teint, poudres, soins — avec les bonnes teintes.</p>
     </div>
     <div class="step">
       <div class="step-connector"></div>
@@ -537,7 +537,7 @@
     </div>
     <div class="why-card">
       <h3>Sous-tons identifiés</h3>
-      <p>Warm, cool, neutre — Léa comprend les nuances de votre carnation pour recommander les teintes qui vous subliment vraiment.</p>
+      <p>Warm, cool, neutre — Laetitia comprend les nuances de votre carnation pour recommander les teintes qui vous subliment vraiment.</p>
     </div>
     <div class="why-card">
       <h3>Disponible partout</h3>
@@ -553,7 +553,7 @@
     </div>
     <div class="why-card">
       <h3>En conversation naturelle</h3>
-      <p>Parlez à Léa comme à une amie experte. Pas de formulaires complexes, pas de quiz interminables — juste un échange fluide.</p>
+      <p>Parlez à Laetitia comme à une amie experte. Pas de formulaires complexes, pas de quiz interminables — juste un échange fluide.</p>
     </div>
   </div>
 </section>
@@ -583,7 +583,7 @@
 
 <script>
 // ⚠️ REMPLACE cette URL par ton URL Apps Script après déploiement
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby_nqMB3yzPGg9SBdR6mYbMlEE_ZBM50_XcebkgHs5lvlZwQebrP1scb21d_6mCTL2irA/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/REMPLACE_PAR_TON_URL/exec";
 
 async function handleSignup(e, source) {
   e.preventDefault();
@@ -593,19 +593,18 @@ async function handleSignup(e, source) {
   const successEl  = document.getElementById(source + '-success');
   const email      = emailInput.value.trim();
 
-  // État chargement
   btn.textContent = "...";
   btn.disabled = true;
 
   try {
+    // text/plain est requis pour passer no-cors sans preflight bloqué
     await fetch(APPS_SCRIPT_URL, {
       method: "POST",
-      mode: "no-cors",      // Apps Script n'envoie pas de CORS headers
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, source })
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify({ email: email, source: source })
     });
 
-    // no-cors = on ne peut pas lire la réponse, on suppose le succès
     emailInput.value = "";
     successEl.classList.add('show');
     setTimeout(() => successEl.classList.remove('show'), 7000);
