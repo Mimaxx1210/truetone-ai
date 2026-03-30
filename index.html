@@ -306,6 +306,76 @@
     color: rgba(245,234,216,0.8); line-height: 1.5;
   }
 
+  /* CONVERSATION DEMO */
+  .demo { background: var(--warm-off); }
+  .demo-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 3rem; max-width: 520px; }
+  .demo-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+  .demo-context h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 400; color: var(--espresso); margin-bottom: 0.6rem;
+  }
+  .demo-context p { font-size: 0.87rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.5rem; }
+  .demo-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+  .demo-tag {
+    font-size: 0.72rem; letter-spacing: 0.06em;
+    background: var(--cream); border: 0.5px solid var(--border);
+    color: var(--terra); padding: 0.3rem 0.8rem; border-radius: 2px;
+  }
+  .demo-features { list-style: none; }
+  .demo-features li {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-size: 0.85rem; color: var(--muted); padding: 0.5rem 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .demo-features li:last-child { border-bottom: none; }
+  .df-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--terra); flex-shrink: 0; }
+  .chat-window {
+    background: var(--espresso); border-radius: 6px; overflow: hidden;
+    box-shadow: 0 24px 60px rgba(30,10,5,0.18);
+  }
+  .chat-topbar {
+    padding: 1rem 1.4rem; background: rgba(255,255,255,0.05);
+    border-bottom: 0.5px solid rgba(212,160,86,0.2);
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .chat-avatar {
+    width: 32px; height: 32px; border-radius: 50%; background: var(--terra);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; color: var(--cream); font-weight: 500; flex-shrink: 0;
+  }
+  .chat-agent-name { font-size: 0.85rem; color: var(--cream); font-weight: 400; }
+  .chat-agent-status { font-size: 0.7rem; color: rgba(212,160,86,0.7); letter-spacing: 0.06em; }
+  .chat-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #5DB075; margin-left: auto; }
+  .chat-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+  .msg { display: flex; flex-direction: column; gap: 0.3rem; max-width: 88%; }
+  .msg.user { align-self: flex-end; align-items: flex-end; }
+  .msg.rosy { align-self: flex-start; }
+  .msg-sender { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(212,160,86,0.6); }
+  .msg-bubble { padding: 0.85rem 1.1rem; font-size: 0.85rem; line-height: 1.6; }
+  .msg.rosy .msg-bubble {
+    background: rgba(212,160,86,0.12); border: 0.5px solid rgba(212,160,86,0.22);
+    border-radius: 4px 16px 16px 16px; color: rgba(245,234,216,0.88);
+  }
+  .msg.user .msg-bubble {
+    background: rgba(160,72,40,0.35); border-radius: 16px 16px 4px 16px; color: var(--cream);
+  }
+  .msg-product {
+    background: rgba(255,255,255,0.06); border: 0.5px solid rgba(212,160,86,0.2);
+    border-radius: 4px; padding: 0.7rem 0.9rem; margin-top: 0.4rem; font-size: 0.8rem;
+  }
+  .msg-product .mp-brand { color: var(--gold); font-size: 0.68rem; letter-spacing: 0.06em; margin-bottom: 0.2rem; }
+  .msg-product .mp-name { color: var(--cream); font-weight: 400; }
+  .msg-product .mp-tag {
+    display: inline-block; margin-top: 0.3rem;
+    background: rgba(160,72,40,0.3); color: rgba(245,234,216,0.7);
+    font-size: 0.65rem; padding: 0.15rem 0.5rem; border-radius: 2px;
+  }
+  .msg-passport {
+    background: rgba(212,160,86,0.08); border: 0.5px solid rgba(212,160,86,0.3);
+    border-radius: 4px; padding: 0.7rem 0.9rem; margin-top: 0.4rem;
+    font-size: 0.8rem; color: var(--gold); display: flex; align-items: center; gap: 0.6rem;
+  }
+
   /* BETA */
   .beta {
     background: var(--terra); color: var(--cream);
@@ -355,14 +425,14 @@
     .hero { grid-template-columns: 1fr; }
     .hero-right { min-height: 420px; order: -1; }
     .hero-left { padding: 6rem 6vw 4rem; }
-    .problem-grid, .brands-grid, .why-grid, .passport-banner { grid-template-columns: 1fr 1fr; }
+    .problem-grid, .brands-grid, .why-grid, .passport-banner, .demo-wrap { grid-template-columns: 1fr 1fr; }
     .steps { grid-template-columns: 1fr; }
     .step-connector { display: none; }
     .stat-block { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 600px) {
     nav ul { display: none; }
-    .problem-grid, .brands-grid, .why-grid, .stat-block, .passport-banner { grid-template-columns: 1fr; }
+    .problem-grid, .brands-grid, .why-grid, .stat-block, .passport-banner, .demo-wrap { grid-template-columns: 1fr; }
     .hero-form, .beta-form { flex-direction: column; }
     .hero-form button, .beta-form button { width: 100%; }
     section { padding: 4rem 6vw; }
@@ -451,7 +521,7 @@
       </div>
       <div class="stat-card">
         <div class="stat-number">Rosy</div>
-        <div class="stat-label">est là pour ça une experte qui comprend vraiment votre carnation</div>
+        <div class="stat-label">est là pour ça — une experte qui comprend vraiment votre carnation</div>
       </div>
     </div>
   </div>
@@ -472,7 +542,7 @@
       <div class="step-connector"></div>
       <div class="step-num">02</div>
       <h3>Obtenez des recommandations</h3>
-      <p>Rosy sélectionne les produits adaptés à votre profil : fond de teint, poudres, soins avec les bonnes teintes et zéro risque de flashback.</p>
+      <p>Rosy sélectionne les produits adaptés à votre profil fond de teint, poudres, soins avec les bonnes teintes et zéro risque de flashback.</p>
     </div>
     <div class="step">
       <div class="step-connector"></div>
@@ -497,7 +567,7 @@
     <ul class="passport-features">
       <li>
         <span class="pf-icon">✦</span>
-        <span>Vos routines sauvegardées - quotidienne, soirée, événement</span>
+        <span>Vos routines sauvegardées quotidienne, soirée, événement</span>
       </li>
       <li>
         <span class="pf-icon">✦</span>
@@ -509,14 +579,14 @@
       </li>
       <li>
         <span class="pf-icon">✦</span>
-        <span>Votre profil peau évolue avec vous - saisons, grossesse, âge</span>
+        <span>Votre profil peau évolue avec vous saisons, grossesse, âge</span>
       </li>
     </ul>
   </div>
   <div class="passport-visual">
     <div class="pv-header">
       <div class="pv-dot"></div>
-      <div class="pv-title">Beauty Passport - Marie</div>
+      <div class="pv-title">Beauty Passport — Marie</div>
     </div>
     <div class="pv-routine">
       <div class="pv-routine-name">Routine quotidienne</div>
@@ -542,7 +612,7 @@
     </div>
     <div class="pv-chat">
       <div class="pv-bubble">
-        "Mon Fenty est presque fini - remets-le dans mon panier ✨"
+        "Mon Fenty est presque fini, remets-le dans mon panier ✨"
       </div>
     </div>
   </div>
@@ -636,7 +706,7 @@
   <div class="why-grid">
     <div class="why-card">
       <h3>Zéro flashback</h3>
-      <p>Chaque recommandation intègre le risque de flashback. Pour vos événements, photos, soirées plus jamais d'effet fantôme.</p>
+      <p>Chaque recommandation intègre le risque de flashback. Pour vos événements, photos, soirées, plus jamais d'effet fantôme.</p>
     </div>
     <div class="why-card">
       <h3>Sous-tons identifiés</h3>
@@ -657,6 +727,88 @@
     <div class="why-card">
       <h3>Commandez sans quitter le chat</h3>
       <p>Rosy ajoute vos produits au panier en un mot. Fenty, Ben Nye, Laura Mercier disponibles chez Sephora, Nocibé ou Lookfantastic directement depuis la conversation.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONVERSATION DEMO -->
+<section class="demo" id="demo">
+  <span class="section-label">Rosy en action</span>
+  <h2>Une vraie conversation,<br><em>de bout en bout</em></h2>
+  <p class="demo-sub">De la recommandation au panier, en passant par la sauvegarde de votre routine tout se passe naturellement, en français, dans le chat.</p>
+  <div class="demo-wrap">
+    <div class="demo-context">
+      <h3>Le profil de Marie</h3>
+      <p>Peau cacao, sous-ton chaud, mixte à grasse. Elle cherche une routine teint complète pour un mariage avec photos.</p>
+      <div class="demo-tags">
+        <span class="demo-tag">Carnation cacao</span>
+        <span class="demo-tag">Sous-ton warm</span>
+        <span class="demo-tag">Peau mixte</span>
+        <span class="demo-tag">Événement photos</span>
+      </div>
+      <h3>Ce que Rosy fait</h3>
+      <ul class="demo-features">
+        <li><span class="df-dot"></span>Identifie le risque de flashback pour les photos</li>
+        <li><span class="df-dot"></span>Recommande fond de teint + poudre assortis</li>
+        <li><span class="df-dot"></span>Ajoute les produits au panier en un mot</li>
+        <li><span class="df-dot"></span>Sauvegarde la routine dans le Beauty Passport</li>
+        <li><span class="df-dot"></span>La retrouve lors de la prochaine conversation</li>
+      </ul>
+    </div>
+    <div class="chat-window">
+      <div class="chat-topbar">
+        <div class="chat-avatar">R</div>
+        <div>
+          <div class="chat-agent-name">Rosy — True Tone AI</div>
+          <div class="chat-agent-status">Experte beauté peaux noires &amp; métissées</div>
+        </div>
+        <div class="chat-status-dot"></div>
+      </div>
+      <div class="chat-body">
+
+        <div class="msg user">
+          <span class="msg-sender">Marie</span>
+          <div class="msg-bubble">Bonjour ! Je cherche une routine teint pour mon mariage, il y aura beaucoup de photos. Peau cacao, sous-ton chaud, mixte à grasse.</div>
+        </div>
+
+        <div class="msg rosy">
+          <span class="msg-sender">Rosy</span>
+          <div class="msg-bubble">
+            Félicitations Marie ! 🎊 Avec des photos au flash, l'anti-flashback est ma priorité absolue pour toi une poudre blanche gâcherait tout.
+            <br><br>Pour ta carnation cacao warm + peau mixte, voici ma sélection :
+          </div>
+          <div class="msg-product">
+            <div class="mp-brand">FENTY BEAUTY</div>
+            <div class="mp-name">Pro Filt'r Soft Matte — Deep 420</div>
+            <span class="mp-tag">Fond de teint</span>
+            <span class="mp-tag" style="margin-left:0.3rem">Longue tenue</span>
+          </div>
+          <div class="msg-product">
+            <div class="mp-brand">BEN NYE</div>
+            <div class="mp-name">Luxury Powder — Cocoa</div>
+            <span class="mp-tag">Zéro flashback</span>
+            <span class="mp-tag" style="margin-left:0.3rem">Peau cacao</span>
+          </div>
+          <div class="msg-bubble" style="margin-top:0.6rem">Tu veux que je les ajoute à ton panier ? 🛒</div>
+        </div>
+
+        <div class="msg user">
+          <span class="msg-sender">Marie</span>
+          <div class="msg-bubble">Oui ! Et sauvegarde ça comme ma routine mariage.</div>
+        </div>
+
+        <div class="msg rosy">
+          <span class="msg-sender">Rosy</span>
+          <div class="msg-bubble">C'est fait ✨</div>
+          <div class="msg-passport">
+            <span>🪪</span>
+            <span>Routine "mariage" sauvegardée dans ton Beauty Passport : 2 produits, accessibles à tout moment.</span>
+          </div>
+          <div class="msg-bubble" style="margin-top:0.6rem">Fenty Deep 420 + Ben Nye Cocoa sont dans ton panier avec les liens Sephora. Plus jamais d'effet fantôme sur tes photos ! 💛</div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
